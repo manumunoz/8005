@@ -131,10 +131,25 @@ SESSION_CONFIG_DEFAULTS = {
 
 SESSION_CONFIGS = [
     {
-        'name': 'three_p5',
-        'display_name': "three_p5",
-        'num_demo_participants': 8,
-        'app_sequence': ['three_p5'],
+        'name': 'group_spillover_NO',
+        'display_name': "group_spillover_NO",
+        'num_demo_participants': 4,
+        'app_sequence': ['group_spillover_no'],
+        'treatment': 1,
+    },
+    {
+        'name': 'group_spillover_LOW',
+        'display_name': "group_spillover_LOW",
+        'num_demo_participants': 4,
+        'app_sequence': ['group_spillover_low'],
+        'treatment': 2,
+    },
+    {
+        'name': 'group_spillover_HIGH',
+        'display_name': "group_spillover_HIGH",
+        'num_demo_participants': 4,
+        'app_sequence': ['group_spillover_high'],
+        'treatment': 3,
     },
 ]
 
