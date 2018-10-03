@@ -131,24 +131,24 @@ SESSION_CONFIG_DEFAULTS = {
 
 SESSION_CONFIGS = [
     {
-        'name': 'group_spillover_NO',
-        'display_name': "group_spillover_NO",
+        'name': 'group_spillover_no',
+        'display_name': "group_spillover_no",
         'num_demo_participants': 4,
-        'app_sequence': ['group_spillover_no'],
+        'app_sequence': ['inst_spillovers','group_spillover'],
         'treatment': 1,
     },
     {
-        'name': 'group_spillover_LOW',
-        'display_name': "group_spillover_LOW",
+        'name': 'group_spillover_low',
+        'display_name': "group_spillover_low",
         'num_demo_participants': 4,
-        'app_sequence': ['group_spillover_low'],
+        'app_sequence': ['inst_spillovers', 'group_spillover'],
         'treatment': 2,
     },
     {
-        'name': 'group_spillover_HIGH',
-        'display_name': "group_spillover_HIGH",
+        'name': 'group_spillover_high',
+        'display_name': "group_spillover_high",
         'num_demo_participants': 4,
-        'app_sequence': ['group_spillover_high'],
+        'app_sequence': ['inst_spillovers', 'group_spillover'],
         'treatment': 3,
     },
 ]
