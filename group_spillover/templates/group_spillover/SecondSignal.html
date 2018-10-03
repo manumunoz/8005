@@ -5,8 +5,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 border rounded p-1 mb-0" style="background-color:#3e2723">
-            <h1 id="lightbrown"> You are player <b id="white"> {{player.role}}</b> -
-                <small id="lightbrown">(This is round {{ subsession.round_number }} of {{ Constants.num_rounds }})</small></h1>
+            <h1 id="lightbrown"> You are player <b id="white"> {{player.role}}</b>
+                <small id="lightbrown">(Round {{ subsession.round_number }} of {{ Constants.num_rounds }})</small></h1>
         </div>
     </div>
 </div>
@@ -14,52 +14,16 @@
 
 {% block content %}
 <div class="container">
-    <!-- Coordination Outcome -->
-    {% if subsession.round_number > 1 %}
-    <div class="row">
-        <div class="col-md-12 text-black border border-dark rounded p-3 mb-1" style="background-color:#d7ccc8">
-            <h4 id="brown">
-             {% if subsession.round_number > 1 %}
-                {% if group.old_coordination == 1 %}
-                    The coordination in the previous round was successful on action:
-                    {% if group.old_win == 1 %}
-                    <button type="button" class="btn btn-warning" disabled>O</button>
-                     {% elif group.old_win == 2 %}
-                    <button type="button" class="btn btn-success" disabled>G</button>
-                    {% elif group.old_win == 3 %}
-                    <button type="button" class="btn btn-info" disabled>B</button>
-                     {% else %}
-                    <button type="button" class="btn btn-danger" disabled>R</button>
-                     {% endif %}
-                {% else %}
-                    The coordination in the <b style='color: #5d4037'>previous</b> round was not successful.
-                {% endif %}
-            {% else %}
-            <br>
-            {% endif %}
-            </h4>
-        </div>
-    </div>
-    {% else %}
-    <br>
-    {% endif %}
-
     <div class="row">
     <!-- Network -->
         <div class="col-md-4 border border-dark rounded p-3 mb-1" style="background-color:#efebe9">
-            {% if subsession.round_number > 1 %}
             <p>
-                <h4 id="brown">Action (previous round):</h4>
-            {% else %}
-                <h4 id="brown">Visual:</h4>
+                <h4 id="brown">1. Visual (last decision):</h4>
             </p>
-            {% endif %}
-             {% if subsession.round_number > 1 %}
-            <p id="brown">
-                The color shows the <b style='color: #3e2723'> action </b> chosen
-            </p>
-            {% endif %}
-            <div id="cy"></div>
+            <h6 id="brown">
+                The color shows the <b>first</b> message sent by each player
+            </h6>
+        <div id="cy"></div>
             <div class="container ">
                 <div class="row">
                 </div>
@@ -68,46 +32,60 @@
     <!-- Summary -->
         <div class="col-md-4 border border-dark rounded p-3 mb-1" style="background-color:#d7ccc8">
             <p>
-                <h4 id="brown">Summary:</h4>
+                <h4 id="brown">2. Summary of results:</h4>
             </p>
-             <p id="brown">
-                - Coordinations in group:
-                    <b style='color: #5d4037'> {{ group.old_total_coordination }} </b>
-                <br>
-                - Goal achieved:
+            <p id="brown">
+                <h6 id="brown">
+                Goal achieved:
                 {% if group.goal_achieved == 1 %}
                 <b style='color: #5d4037'> Yes </b>
                 {% else %}
                 <b style='color: #5d4037'> No </b>
                 {% endif %}
-                <br>
-                - Points in group:
+                </h6>
+                <h6 id="brown">
+                Total coordinations in group: <b style='color: #5d4037'> {{ group.old_total_coordination }} </b>
+                </h6>
+                <h6 id="brown">
+                Coordinations by action:
+                </h6>
+                <button type="button" class="btn btn-warning" disabled>{{ group.old_total_win_one }}</button>
+                <button type="button" class="btn btn-success" disabled>{{ group.old_total_win_two }}</button>
+                <button type="button" class="btn btn-info" disabled>{{ group.old_total_win_three }}</button>
+                <button type="button" class="btn btn-danger" disabled>{{ group.old_total_win_four }}</button>
+                <br><br>
+                <h6 id="brown">
+                Total points in group:
                     <b style='color: #5d4037'> {{ group.old_group_total_points }} </b>
-                <br>
-                - Your points:
+                </h6>
+                <h6 id="brown">
+                Your points:
                     <b style='color: #5d4037'> {{ player.old_total_points }} </b>
+                </h6>
             </p>
         </div>
     <!-- Choice -->
         <div class="col-md-4 border border-dark rounded p-3 mb-1" style="background-color:#3e2723">
             <p>
-                <h4 id="lightbrown"> First Message: </h4>
+                <h4 id="lightbrown">3. Decision: 2nd message</h4>
             </p>
-            <p id="lightbrown">
-                Click on the message you want to send:
-            </p>
-            <input type="hidden" value="0" name="first" id="first"/>
-            <button name="first" value="1" class="btn btn-outline-warning">O</button>
-            <button name="first" value="2" class="btn btn-outline-success">G</button>
-            <button name="first" value="3" class="btn btn-outline-info">B</button>
-            <button name="first" value="4" class="btn btn-outline-danger">R</button>
+            <h6 id="lightbrown">
+                Click on the <b>second message</b> you want to send:
+            </h6>
+            <br>
+            <input type="hidden" value="0" name="second" id="second"/>
+            <button name="second" value="1" class="btn btn-outline-warning">O</button>
+            <button name="second" value="2" class="btn btn-outline-success">G</button>
+            <button name="second" value="3" class="btn btn-outline-info">B</button>
+            <button name="second" value="4" class="btn btn-outline-danger">R</button>
         </div>
     </div>
 </div>
 {% endblock %}
 
+
+
 {% block scripts %}
-<!-- JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.1.0/cytoscape.js"></script>
     <script>
         var jsonnet = JSON.parse('{{group.network_data|safe}}');
@@ -137,16 +115,16 @@
                 ) {
                     value.data.role = 'left'
                 }
-                if (value.group === 'nodes' && value.data.old_action == 1) {
+                if (value.group === 'nodes' && value.data.first == 1) {
                     value.data.behavior = 'One'
                 }
-                if (value.group === 'nodes' && value.data.old_action == 2) {
+                if (value.group === 'nodes' && value.data.first == 2) {
                     value.data.behavior = 'Two'
                 }
-                if (value.group === 'nodes' && value.data.old_action == 3) {
+                if (value.group === 'nodes' && value.data.first == 3) {
                     value.data.behavior = 'Three'
                 }
-                if (value.group === 'nodes' && value.data.old_action == 4) {
+                if (value.group === 'nodes' && value.data.first == 4) {
                     value.data.behavior = 'Four'
                 }
                 return value
@@ -168,10 +146,10 @@
             .style('width', '30%')
             .style('height', '30%')
             .style('background-color', '#efebe9')
-            .style('border-width', '2')
-            .style('border-color', '#3e2723')
+            .style('border-width', '5')
+            .style('border-color', '#000000')
             .style('font-size', '18pt')
-            .style('color','#3e2723')
+            .style('color','#000000')
             .style('padding', '100%')
             // Node Labels: Top
             .selector('node[role="up"]')
@@ -190,19 +168,19 @@
             // BEHAVIOR ===========================================
             // Choice == 1
             .selector('node[behavior="One"]')
-            .style('background-color', '#ffbb33')
+            .style('border-color', '#ffbb33')
                 // .style('background-color', '#E1BEE7')
             // Choice == 2
             .selector('node[behavior="Two"]')
-            .style('background-color', '#00C851')
+            .style('border-color', '#00C851')
                 // .style('background-color', '#C8E6C9')
             // Choice == 3
             .selector('node[behavior="Three"]')
-            .style('background-color', '#33b5e5')
+            .style('border-color', '#33b5e5')
                 // .style('background-color', '#E1BEE7')
             // Choice == 4
             .selector('node[behavior="Four"]')
-            .style('background-color', '#ff4444')
+            .style('border-color', '#ff4444')
                 // .style('background-color', '#C8E6C9')
             // ====================================================
             .update() // update the elements in the graph with the new style
@@ -213,7 +191,6 @@
 {% endblock %}
 
 {% block styles %}
-<!-- CSS -->
     <style type="text/css">
         #cy {
             width: 100%;

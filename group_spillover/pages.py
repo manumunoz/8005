@@ -7,6 +7,11 @@ import json
 import itertools
 
 
+class Start(Page):
+    def is_displayed(self):
+        return self.round_number == 1
+
+
 class BeforeSignalWP(WaitPage):
     def after_all_players_arrive(self):
         for player in self.group.get_players():
@@ -22,12 +27,20 @@ class BeforeSignalWP(WaitPage):
             self.group.old_coordination = self.group.in_round(self.round_number - 1).coordination
             self.group.old_total_coordination = self.group.in_round(self.round_number - 1).total_coordination
             self.group.old_win = self.group.in_round(self.round_number - 1).win
+            self.group.old_total_win_one = self.group.in_round(self.round_number - 1).total_win_one
+            self.group.old_total_win_two = self.group.in_round(self.round_number - 1).total_win_two
+            self.group.old_total_win_three = self.group.in_round(self.round_number - 1).total_win_three
+            self.group.old_total_win_four = self.group.in_round(self.round_number - 1).total_win_four
             self.group.old_group_total_points = self.group.in_round(self.round_number - 1).group_total_points
         else:
             self.group.old_coordination = 0
             self.group.old_total_coordination = 0
             self.group.old_group_total_points = 0
             self.group.old_win = 0
+            self.group.old_total_win_one = 0
+            self.group.old_total_win_two = 0
+            self.group.old_total_win_three = 0
+            self.group.old_total_win_four = 0
 
 
 class FirstSignal(Page):
@@ -76,6 +89,7 @@ class ResultsWaitPage(WaitPage):
         self.group.set_coordination()
         self.group.total_points()
         self.group.total_values()
+        self.group.finalpay_value()
         self.group.payoff_value()
 
 
@@ -85,6 +99,7 @@ class Results(Page):
 
 
 page_sequence = [
+    Start,
     BeforeSignalWP,
     FirstSignal,
     BeforeSecondSignalWP,
