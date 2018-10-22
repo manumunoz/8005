@@ -131,6 +131,30 @@ SESSION_CONFIG_DEFAULTS = {
 
 SESSION_CONFIGS = [
     {
+        'name': 'diversity_no',
+        'display_name': "Diversity_No",
+        'num_demo_participants': 4,
+        'app_sequence': ['inst_spillovers', 'group_spillover', 'min_effort'],
+        'treatment': 1,
+
+    },
+    {
+        'name': 'diversity_low',
+        'display_name': "Diversity_Low",
+        'num_demo_participants': 4,
+        'app_sequence': ['inst_spillovers', 'group_spillover', 'min_effort'],
+        'treatment': 2,
+
+    },
+    {
+        'name': 'diversity_high',
+        'display_name': "Diversity_high",
+        'num_demo_participants': 4,
+        'app_sequence': ['inst_spillovers', 'group_spillover', 'min_effort'],
+        'treatment': 3,
+
+    },
+    {
         'name': 'group_spillover_no',
         'display_name': "group_spillover_no",
         'num_demo_participants': 4,
@@ -150,6 +174,12 @@ SESSION_CONFIGS = [
         'num_demo_participants': 4,
         'app_sequence': ['inst_spillovers', 'group_spillover'],
         'treatment': 3,
+    },
+    {
+        'name': 'min_effort',
+        'display_name': "Min. Effort",
+        'num_demo_participants': 4,
+        'app_sequence': ['min_effort'],
     },
 ]
 
