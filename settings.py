@@ -130,12 +130,12 @@ SESSION_CONFIG_DEFAULTS = {
 }
 
 SESSION_CONFIGS = [
-    {
-        'name': 'word_task',
-        'display_name': "Word Task",
-        'num_demo_participants': 1,
-        'app_sequence': ['word_task', 'final'],
-    },
+    # {
+    #     'name': 'word_task',
+    #     'display_name': "Word Task",
+    #     'num_demo_participants': 1,
+    #     'app_sequence': ['word_task', 'final'],
+    # },
     {
         'name': 'sum_task',
         'display_name': "Sum Task",
