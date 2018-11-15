@@ -131,55 +131,16 @@ SESSION_CONFIG_DEFAULTS = {
 
 SESSION_CONFIGS = [
     {
-        'name': 'diversity_no',
-        'display_name': "Diversity_No",
-        'num_demo_participants': 4,
-        'app_sequence': ['inst_spillovers', 'group_spillover', 'min_effort'],
-        'treatment': 1,
-
+        'name': 'word_task',
+        'display_name': "Word Task",
+        'num_demo_participants': 1,
+        'app_sequence': ['word_task', 'final'],
     },
     {
-        'name': 'diversity_low',
-        'display_name': "Diversity_Low",
-        'num_demo_participants': 4,
-        'app_sequence': ['inst_spillovers', 'group_spillover', 'min_effort'],
-        'treatment': 2,
-
-    },
-    {
-        'name': 'diversity_high',
-        'display_name': "Diversity_high",
-        'num_demo_participants': 4,
-        'app_sequence': ['inst_spillovers', 'group_spillover', 'min_effort'],
-        'treatment': 3,
-
-    },
-    {
-        'name': 'group_spillover_no',
-        'display_name': "group_spillover_no",
-        'num_demo_participants': 4,
-        'app_sequence': ['inst_spillovers','group_spillover'],
-        'treatment': 1,
-    },
-    {
-        'name': 'group_spillover_low',
-        'display_name': "group_spillover_low",
-        'num_demo_participants': 4,
-        'app_sequence': ['inst_spillovers', 'group_spillover'],
-        'treatment': 2,
-    },
-    {
-        'name': 'group_spillover_high',
-        'display_name': "group_spillover_high",
-        'num_demo_participants': 4,
-        'app_sequence': ['inst_spillovers', 'group_spillover'],
-        'treatment': 3,
-    },
-    {
-        'name': 'min_effort',
-        'display_name': "Min. Effort",
-        'num_demo_participants': 4,
-        'app_sequence': ['min_effort'],
+        'name': 'sum_task',
+        'display_name': "Sum Task",
+        'num_demo_participants': 1,
+        'app_sequence': ['sum_task', 'final'],
     },
 ]
 
