@@ -137,10 +137,10 @@ SESSION_CONFIGS = [
     #     'app_sequence': ['word_task', 'final'],
     # },
     {
-        'name': 'sum_task',
-        'display_name': "Sum Task",
+        'name': 'task_sums',
+        'display_name': "task_sums",
         'num_demo_participants': 1,
-        'app_sequence': ['sum_task', 'final'],
+        'app_sequence': ['task_sums','final'],
     },
 ]
 

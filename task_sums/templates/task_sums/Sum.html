@@ -1,15 +1,14 @@
 {% extends "global/Page.html" %}
-{% load staticfiles otree_tags %}
+{% load otree static %}
 
 {% block title %}
-    <font color="blue">Addition task ({{ subsession.round_number }}/{{ Constants.num_rounds }})</font>
+    <span color="blue">Addition task ({{ subsession.round_number }}/{{ Constants.num_rounds }})</span>
     <br>
-<font size="3">Please sum the highest numbers in both matrices (Correct answers:<font color="blue">{{ player.num_correct }})</font></font>
+    <small>Please sum the highest numbers in both matrices (Correct answers:<span color="blue">{{ player.num_correct }})</span></small>
 {% endblock %}
 
 {% block content %}
-
-    <div class="row">
+   <div class="row">
         <div class="col-md-6 col-md-offset-1 text-center">
             <table border="1">
                 {% for row in player.m_left %}
@@ -39,11 +38,6 @@
     </p>
 
     <button class="otree-btn-next btn btn-primary next-button otree-next-button">Submit</button>
-
 {% endblock %}
 
-{% block scripts %}
-<script>
 
-</script>
-{% endblock %}

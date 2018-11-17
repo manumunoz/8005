@@ -1,0 +1,19 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Please entrer your <b>10-digit</b> code
+{% endblock %}
+
+{% block content %}
+<p>
+    {% formfield player.code label="" %}
+
+    After clicking the <b>Next</b> button the task will start.
+
+    <br><br>
+
+    {% next_button %}
+</p>
+{% endblock %}
+
