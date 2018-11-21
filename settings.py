@@ -138,7 +138,7 @@ SESSION_CONFIGS = [
     },
     {
         'name': 'task_sums',
-        'display_name': "task_sums",
+        'display_name': "Sum Task",
         'num_demo_participants': 1,
         'app_sequence': ['task_sums','final'],
     },
