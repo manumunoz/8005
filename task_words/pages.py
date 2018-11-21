@@ -17,11 +17,10 @@ class Task(Page):
     form_model = 'player'
     form_fields = ['submitted_answer', 'word_increment']
 
-
     def vars_for_template(self):
         return {
             'word': self.player.current_question()['question'],
-            'word_id' : self.player.word_show + 1, ## Seems easier to just use the word_show variable (and not have a word_id variable)
+            'word_show': str(self.player.word_show), ## Seems easier to just use the word_show variable (and not have a word_id variable)
             'player_in_previous_rounds': reversed(self.player.in_previous_rounds()), # show the last period first
             'total_payoff': sum([p.payoff for p in self.player.in_all_rounds()]),
         }
@@ -35,8 +34,11 @@ class Task(Page):
     def before_next_page(self):
         self.player.set_payoffs()
 
-        if self.player.word_increment==1:
+        if self.player.word_increment == 1:
             self.player.word_show += 1
+            if self.player.word_show > Constants.num_words:  # end the app if the number of words has been overcomed
+                self.participant.vars['expiry_timestamp'] = time.time()
+                return
         else:
             if self.player.validate_answer(self.player.submitted_answer):
                 self.player.word_check()

@@ -2,7 +2,8 @@
 {% load otree static %}
 
 {% block title %}
-    <span size="25" color="blue">{{ word }}</span>  <span color="black">(word {{word_id}} out of 24)</span>
+    <span size="25" color="blue">{{ word }}</span>  <span color="black">(word {{ word_show }}
+    out of {{ Constants.num_words }})</span>
 
 {% endblock %}
 
