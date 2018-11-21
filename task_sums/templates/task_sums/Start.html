@@ -2,7 +2,7 @@
 {% load otree static %}
 
 {% block title %}
-    Please entrer your <b>10-digit</b> code
+    Please entrer your <b id="blue">10-digit</b> code
 {% endblock %}
 
 {% block content %}
@@ -15,5 +15,13 @@
 
     {% next_button %}
 </p>
+{% endblock %}
+
+{% block styles %}
+    <style type="text/css">
+        #blue {
+            color: #2962FF
+        }
+    </style>
 {% endblock %}
 

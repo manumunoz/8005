@@ -8,19 +8,25 @@ The task is over
 {% block content %}
 
 <p>
-    Your scored <font color="blue">{{ participant.payoff }}</font> in the task.
+    Your scored <b id="blue">{{ participant.payoff }}</b> in the task.
 
     <br><br>
 
-    Please return to the previous window. You will be asked to provide the following password
+    Please return to the previous window. You will be asked to provide the following password:
 
     <br><br>
 
-     <center><font size="25" color="blue">nagackwx</font></center>
+     <center><h1 id="blue">nagackwx</font></center>
 </p>
 
 
 {% endblock %}
 
-
+{% block styles %}
+    <style type="text/css">
+        #blue {
+            color: #2962FF
+        }
+    </style>
+{% endblock %}
 

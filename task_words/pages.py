@@ -5,8 +5,16 @@ from .models import Constants
 import time
 
 class Start(Page):
+    form_model = 'player'
+    form_fields = ['code']
+
     def is_displayed(self):
         return self.round_number == 1
+
+
+    def code_error_message(self, value):
+        if len(value) != 10 :
+            return 'The code must be 10-digits long'
 
     def before_next_page(self):
         # user has 5 minutes to complete as many pages as possible
@@ -29,7 +37,7 @@ class Task(Page):
     def error_message(self, values):
         if values['word_increment']==0:
             if self.player.validate_answer(str(values['submitted_answer'])) == False:
-                return 'The word you introduced is too short, use at least 5 characters'
+                return 'If you submit an empty word you will loose a point'
 
     def before_next_page(self):
         self.player.set_payoffs()
