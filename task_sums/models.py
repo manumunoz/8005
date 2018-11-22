@@ -50,8 +50,8 @@ class Player(BasePlayer):
 
     def initialize(self):
         self.num_correct = sum([p.answer_correct for p in self.in_all_rounds()])
-        self.rand_left = random.randint(Constants.min_rand, Constants.max_rand) + random.randint(Constants.min_rand, Constants.max_rand) + random.randint(Constants.min_rand, Constants.max_rand)
-        self.rand_right = random.randint(Constants.min_rand, Constants.max_rand) + random.randint(Constants.min_rand, Constants.max_rand) + random.randint(Constants.min_rand, Constants.max_rand)
+        self.rand_left = (random.randint(Constants.min_rand, Constants.max_rand) + random.randint(Constants.min_rand, Constants.max_rand) + random.randint(Constants.min_rand, Constants.max_rand))
+        self.rand_right = (random.randint(Constants.min_rand, Constants.max_rand) + random.randint(Constants.min_rand, Constants.max_rand) + random.randint(Constants.min_rand, Constants.max_rand))
         self.solution = self.rand_left + self.rand_right
 
         for i in range(Constants.num_rows):
