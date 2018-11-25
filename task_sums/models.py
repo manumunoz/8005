@@ -5,6 +5,7 @@ from otree.api import (
 
 import random
 import numpy
+import math
 
 author = 'Manu Munoz'
 
@@ -17,7 +18,7 @@ class Constants(BaseConstants):
     name_in_url = 'task_sums'
     players_per_group = None
     num_rounds = 40
-    max_rand = 33
+    max_rand = 99
     min_rand = 0
     num_rows = 6
     num_cols = 6
@@ -50,8 +51,12 @@ class Player(BasePlayer):
 
     def initialize(self):
         self.num_correct = sum([p.answer_correct for p in self.in_all_rounds()])
-        self.rand_left = (random.randint(Constants.min_rand, Constants.max_rand) + random.randint(Constants.min_rand, Constants.max_rand) + random.randint(Constants.min_rand, Constants.max_rand))
-        self.rand_right = (random.randint(Constants.min_rand, Constants.max_rand) + random.randint(Constants.min_rand, Constants.max_rand) + random.randint(Constants.min_rand, Constants.max_rand))
+        self.rand_left = (math.floor((random.random() * 33)) + math.floor((random.random() * 33)) + math.floor((random.random() * 33)))
+        self.rand_right = (math.floor((random.random() * 33)) + math.floor((random.random() * 33)) + math.floor((random.random() * 33)))
+        # self.rand_left = random.randrange(Constants.min_rand, Constants.max_rand, 1)
+        # self.rand_right = random.randrange(Constants.min_rand, Constants.max_rand, 1)
+        # self.rand_left = (random.randint(Constants.min_rand, Constants.max_rand) + random.randint(Constants.min_rand, Constants.max_rand) + random.randint(Constants.min_rand, Constants.max_rand))
+        # self.rand_right = (random.randint(Constants.min_rand, Constants.max_rand) + random.randint(Constants.min_rand, Constants.max_rand) + random.randint(Constants.min_rand, Constants.max_rand))
         self.solution = self.rand_left + self.rand_right
 
         for i in range(Constants.num_rows):
