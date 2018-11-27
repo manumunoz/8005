@@ -30,7 +30,7 @@ DATABASES = {
         # export DATABASE_URL=mysql://USER:PASSWORD@HOST:PORT/NAME
 
         # fall back to SQLite if the DATABASE_URL env var is missing
-        default='sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite2')
+        default='sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
     )
 }
 
